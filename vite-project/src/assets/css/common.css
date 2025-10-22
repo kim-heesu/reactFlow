@@ -1,0 +1,26 @@
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/* 태블릿 */
+@media screen and (max-width: 1024px){
+    html {
+        font-size: 10px;
+    }
+}
+
+/* 모바일 */
+@media screen and (max-width: 768px){
+    html {
+        font-size: 2.64vw;
+    }
+}
+
+
+/* 최소사이즈 */
+@media screen and (max-width: 380px){
+    html {
+        font-size: 10px;
+    }
+}

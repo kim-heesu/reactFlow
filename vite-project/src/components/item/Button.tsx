@@ -1,7 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
 
-const ButtonStyled = styled.button`
+type ButtonProps = {
+    color: string;
+    label: string;
+}
+
+const StyleButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -16,8 +21,8 @@ const ButtonStyled = styled.button`
   }
 `;
 
-function Button({ color = "gray", label = "button" }) {
-  return <ButtonStyled color={color}>{color}{label}</ButtonStyled>;
+function Button(props:ButtonProps) {
+  return <StyleButton color={props.color}>{props.color}{props.label}</StyleButton>;
 }
 
 export default Button;
