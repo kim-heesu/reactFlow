@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useState , useCallback } from 'react';
-import { ReactFlow, Background, Controls, applyEdgeChanges, applyNodeChanges, addEdge } from '@xyflow/react';
+import { ReactFlow, Background, Controls, applyEdgeChanges, applyNodeChanges, addEdge, Panel } from '@xyflow/react';
 import type { Node, Edge, NodeChange, EdgeChange ,Connection } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -13,26 +13,33 @@ const FlowWrap = styled.div`
     right: 0;
     flex-direction: row;
   }
+  .react-flow__panel.top {
+    padding: 1rem;
+    background:#fff;  
+    box-shadow: 0 0 1rem 0.2rem rgba(0,0,0,0.1);
+    button {
+      display: block;
+      width: 10rem;
+      border: 1px solid #000;
+      padding: 0.1rem 0.4rem;
+      border-radius: 0.4rem;
+      background: #fff;
+    }
+
+    .box {
+      padding: 1rem 0;
+      margin: 1rem 0; 
+      strong {
+        display: block;
+        margin-bottom: 1rem;
+      }
+      & + .box {
+        border-top: 1px solid #ddd;
+      }
+    }
+  }
 `
 
-const ButtonWrap = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  box-shadow: 0 0 0.3rem 0.1rem rgba(0,0,0,0.1);
-  z-index: 999;
-
-  button {
-    display: block;
-    width: 10rem;
-    border: 1px solid #000;
-    padding: 0.1rem 0.4rem;
-    border-radius: 0.4rem;
-  }
-`;
 
 export default function FlowSample() {
   //노드 객체
@@ -107,15 +114,28 @@ export default function FlowSample() {
     console.log('edges list',edges);
   }
 
+  // 백그라운드 스타일을 설정
+  const [variant , setvariant] = useState('dots');
+  const [bgColor , setbgColor] = useState('gray');
 
+  const onBgStyledChange = (type:string) => {
+    setvariant(type)
+  }
+  
   return (
     <FlowWrap>
-      <ButtonWrap>
-        <button type="button" onClick={onConsoleLog}>current</button>
-        <button type="button">modal List</button>
-        <button type="button">modal Code</button>
-        <button type="button">modal Text</button>
-      </ButtonWrap>
+      <Panel position="top-left">
+        <div className="box">
+          <button type="button" onClick={onConsoleLog}>Node,edge정보</button>
+        </div>
+        <div className="box">
+          <strong>background styled</strong>
+          <button type="button" onClick={()=>{onBgStyledChange('dots')}}>dots</button>
+          <button type="button" onClick={()=>{onBgStyledChange('lines')}}>lines</button>
+          <button type="button" onClick={()=>{onBgStyledChange('cross')}}>cross</button>
+        </div>
+
+      </Panel>
       <ReactFlow 
       nodes={nodes} 
       edges={edges}
@@ -123,7 +143,7 @@ export default function FlowSample() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       >
-        <Background />
+        <Background color={bgColor} variant={variant} />
         <Controls />
       </ReactFlow>
     </FlowWrap>
