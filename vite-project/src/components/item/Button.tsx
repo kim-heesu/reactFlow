@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 type ButtonProps = {
     color: string;
     label: string;
+    onclick?: () => void;
 }
 
 const StyleButton = styled.button`
