@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 
+function Main(){
+
+    return (
+        <StyledMain>main
+        </StyledMain>
+    )
+}
+
 const StyledMain = styled.div`
 
 `
-
-function Main(){
-    return <StyledMain>StyledMain</StyledMain>
-}
 
 export default Main;

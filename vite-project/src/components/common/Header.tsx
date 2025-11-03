@@ -19,6 +19,7 @@ function Header(){
             <nav>
                 <ul>
                     <li><NavLink to='/'>Main</NavLink></li>
+                    <li><NavLink to='/tabSample'>tabSample</NavLink></li>
                     <li><NavLink to='/flowPage'>flowPage</NavLink></li>
                     <li><NavLink to='/flowSample'>flowSample</NavLink></li>
                 </ul>

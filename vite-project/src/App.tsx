@@ -5,6 +5,7 @@ import Header from './components/common/Header';
 import Main from './views/Main';
 import FlowPage from './views/FlowPage';
 import FlowSample from './views/FlowSample';
+import TabSample from './views/TabSample';
 
 const Wrap = styled.div`
     display: flex;
@@ -26,6 +27,7 @@ function RouteWrap(){
                     <Route path="/" element={<Main/>}></Route>
                     <Route path="/flowPage" element={<FlowPage/>}></Route>
                     <Route path="/flowSample" element={<FlowSample/>}></Route>
+                    <Route path="/tabSample" element={<TabSample/>}></Route>
                 </Routes>
             </Content>
         </Wrap>
