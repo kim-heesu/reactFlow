@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 
 import TabItem from '../components/item/TabItem';
-import TabContent from '../components/item/TabContent';
 
 function TabSample(){
 
@@ -11,20 +10,25 @@ function TabSample(){
         {
             name: "Tab 1",
             dataType: "tab1",
-            children: <div>Content for Tab 1</div>,
         },
         {
             name: "Tab 2",
             dataType: "tab2",
-            children: <div>Content for Tab 2</div>,
         },
         {
             name: "Tab 3",
             dataType: "tab3",
-            children: <div>Content for Tab 3</div>,
         },
     ]
-    const [activeTab, setActiveTab] = useState("tab1");
+    // tab Content
+    const tabContent = {
+        "tab1": <div>Content for Tab 1</div>,
+        "tab2": <div>Content for Tab 2</div>,
+        "tab3": <div>Content for Tab 3</div>,
+    }
+
+    type activeTabType = "tab1" | "tab2" | "tab3";
+    const [activeTab, setActiveTab] = useState<activeTabType>("tab1");
 
     return (
         <StyledTabSample>
@@ -34,9 +38,9 @@ function TabSample(){
                 colorType="dark"
                 item={tabInfo}
                 activeTab={activeTab}
-                onClick={(dataType:string) => setActiveTab(dataType)}
+                onClick={(dataType:string) => setActiveTab(dataType as activeTabType)}
             />
-            <TabContent tabInfo={tabInfo} activeTab={activeTab}/>
+            {tabContent[activeTab]}
         </StyledTabSample>
     )
 }
