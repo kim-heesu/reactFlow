@@ -2,7 +2,6 @@ import { api } from '@/api/core/axios';
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { UseApiGet, UseApiMutation, HttpMethod, QueryKey, ApiErrorType } from "@/types/api/core/apiType";
 
-console.log(api)
 // queryKey 생성
 export const buildKey = (
   method: HttpMethod,

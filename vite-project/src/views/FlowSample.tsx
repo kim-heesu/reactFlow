@@ -4,7 +4,7 @@ export default function FlowSample(){
     const { data } = useGetList();
     return (
         <>ddd
-            {data}
+            {data?.map(item => <div key={item.id}>{item.name}</div>)}
         </>
     )
 }
